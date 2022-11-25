@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show all data</title>
+    <style>
+        body{
+            background-color: crimson;
+        }
+        .btn{
+            background-color: darkblue;
+            color: white;
+            display: inline-block;
+            padding: 8px 15px;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="btn">Add student</a>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Password</td>
+            <td>gender</td>
+            <td>hobby</td>
+            <td>city</td>
+            <td>Description</td>
+            <td>image</td>
+            <td>action</td>
+        </tr>
+        <% for(var s of record){%>
+        <tr>
+            <td><%= s.name %></td>
+            <td><%= s.email %></td>
+            <td><%= s.password %></td>
+            <td><%= s.gender %></td>
+            <td><%= s.hobby %></td>
+            <td><%= s.city %></td>
+            <td><%= s.description %></td>
+            <td><img src="<%= s.avatar %>" alt="" width="100"></td>
+            <td><a href="/collage/student/deleteRecord/<%= s.id %>">Delete</a>
+                || <a href="/collage/student/updateRecord/?stId=<%= s.id %>">Update</a></td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>

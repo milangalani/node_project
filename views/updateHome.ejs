@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <style>
+        body{
+            background-color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <h1>This Page Is update Page</h1>    
+    <form method="post" action="/collage/student/EditStudent" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%= singleRecord.id %>">
+        <table border="1">
+            <tr>
+                <td>Enter Name:</td>
+                <td><input type="text" name="name" value="<%= singleRecord.name %>"></td>
+            </tr>
+            <tr>
+                <td>Enter Email:</td>
+                <td><input type="email" name="email" value="<%= singleRecord.email %>"></td>
+            </tr>
+            <tr>
+                <td>Enter Password:</td>
+                <td><input type="password" name="password" value="<%= singleRecord.password %>"></td>
+            </tr>
+            <tr>
+                <td>Enter gender:</td>
+                <td><input type="radio" name="gender" value="male" <% if(singleRecord.gender=='male'){%><%="checked"%> <%}%>>Male
+                    <input type="radio" name="gender" value="female" <% if(singleRecord.gender=='female'){%><%="checked"%> <%}%>>Female</td>
+            </tr>
+            <tr>
+                <td>Enter hobby:</td>
+                <td><input type="checkbox" name="hobby[]" value="reading" <% if(singleRecord.hobby.includes('reading')){ %><%="checked"%> <%}%>>Reading
+                    <input type="checkbox" name="hobby[]" value="singing" <% if(singleRecord.hobby.includes('singing')){ %><%="checked"%> <%}%>>Singing
+                    <input type="checkbox" name="hobby[]" value="music" <% if(singleRecord.hobby.includes('music')){ %><%="checked"%> <%}%>>music
+                </td>
+            </tr>
+            <% var city = ["Surat","Rajkot","vadodara","Navasari","Ahmadabad"] %>
+            <tr>
+                <td>Select City</td>
+                <td>
+                    <select name="city">
+                        <option value="">--select city--</option>
+                        <% for(var i=0; i<city.length; i++){%>
+                        <option value="<%= city[i] %>" <% if(singleRecord.city == city[i]){%><%= "selected" %><%} %>><%= city[i] %></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <textarea name="description" id="5" cols="30" rows="10"><%= singleRecord.description%></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload File</td>
+                <td><input type="file" name="avatar">
+                <img src="<%= singleRecord.avatar %>" height="100"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Edit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

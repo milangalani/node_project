@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body{
+            background-color: red;
+        }
+        a{
+            background-color: darkblue;
+            color: white;
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>This Page Is Home Page</h1>  
+    <a href="/collage/student/datapage">show all data</a>
+    <form method="post" action="/collage/student/addstudent" enctype="multipart/form-data">
+        <table border="1">
+            <tr>
+                <td>Enter Name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Enter Email:</td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <td>Enter Password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Select Gender :</td>
+                <td><input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">FeMale</td>
+            </tr>
+            <tr>
+                <td>Select Hobby :</td>
+                <td><input type="checkbox" name="hobby[]" value="reading">reading
+                    <input type="checkbox" name="hobby[]" value="singing">singing
+                    <input type="checkbox" name="hobby[]" value="music">music</td>
+            </tr>
+            <% var city = ["surat", "ahemdabad", "rajkot", "vadodara", "navasari"] %>
+            <tr>
+                <td>select city</td>
+                <td>
+                    <select name="city">
+                        <option value="">--select city--</option>
+                        <% for(var i=0; i<city.length; i++) {%>
+                        <option value="<%= city[i] %>"><%= city[i]%></option>
+                        <% } %>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <textarea name="description" cols="30" rows="5"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload File</td>
+                <td><input type="file" name="avatar"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+    <br><br><br>
+</body>
+</html>
